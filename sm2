@@ -1,0 +1,59 @@
+from tkinter import Tk, Label, Menu, messagebox
+
+def semComando():
+    print("")
+
+def sobreProgramador():
+    # Mensagem com as informações do programador e o "by: Og" no canto inferior
+    messagebox.showinfo("Dados do Programador", "Nome: Gabriel Fonseca Alves\nIdade: 28\n\n" + " " * 30 + "by: Og")
+
+app = Tk()
+app.title("sm2")
+app.geometry("500x500")
+app.configure(background="#dde")
+
+# Criação da barra de menus
+barraDeMenus = Menu(app)
+
+# Menu Contatos
+menuContatos = Menu(barraDeMenus, tearoff=0)
+menuContatos.add_command(label="Novo", command=semComando)
+menuContatos.add_command(label="Pesquisar", command=semComando)
+menuContatos.add_command(label="Deletar", command=semComando)
+menuContatos.add_separator()
+menuContatos.add_command(label="Fechar", command=app.quit)
+barraDeMenus.add_cascade(label="Contato", menu=menuContatos)
+
+# Menu Manutenção
+menuManutencao = Menu(barraDeMenus, tearoff=0)
+menuManutencao.add_command(label="Banco de Dados", command=semComando)
+barraDeMenus.add_cascade(label="Manutenção", menu=menuManutencao)
+
+# Menu Relatórios
+menuRelatorios = Menu(barraDeMenus, tearoff=0)
+menuRelatorios.add_command(label="Relatório 1", command=semComando)
+menuRelatorios.add_command(label="Relatório 2", command=semComando)
+menuRelatorios.add_command(label="Relatório 3", command=semComando)
+barraDeMenus.add_cascade(label="Relatórios", menu=menuRelatorios)
+
+# Menu Sobre
+menuSobre = Menu(barraDeMenus, tearoff=0)
+menuSobre.add_command(label="SM2", command=semComando)
+barraDeMenus.add_cascade(label="Sobre", menu=menuSobre)
+
+# Menu Informações
+menuInformacoes = Menu(barraDeMenus, tearoff=0)
+menuInformacoes.add_command(label="Programa", command=semComando)
+menuInformacoes.add_command(label="Programador", command=sobreProgramador)
+menuInformacoes.add_separator()
+menuInformacoes.add_command(label="Sair", command=app.quit)
+barraDeMenus.add_cascade(label="Informações", menu=menuInformacoes)
+
+# Configurações finais
+app.config(menu=barraDeMenus)
+
+# Label no canto inferior direito
+labelRodape = Label(app, text="by: Og", bg="#dde")
+labelRodape.pack(side="bottom", anchor="se", padx=10, pady=10)
+
+app.mainloop()
